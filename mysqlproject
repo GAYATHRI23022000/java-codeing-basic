@@ -1,0 +1,112 @@
+package project;
+import java.sql.*;
+import java.util.Scanner;
+public class employee1{
+@SuppressWarnings("resource")
+public static void main(String args[]) 
+{
+	@SuppressWarnings("unused")
+	String select,delete,update;
+	
+			Scanner s = new Scanner(System.in);
+			
+			
+	        while(true)
+	        {
+	            System.out.println("crud operation");
+	            System.out.println("Choose 1 for select");
+	            System.out.println("Choose 2 for delete");
+	            System.out.println("Choose 3 for update");
+	            System.out.println("Choose 4 for insert");
+
+
+	            System.out.print("Choose the operation you want to perform:");
+	            int n = s.nextInt();
+	            switch(n)
+	            {
+	                case 1:
+	                {
+	                try
+	        		{
+	                Class.forName("com.mysql.jdbc.Driver");
+	        		
+
+	        			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/empproject","root","gayathri23*M");
+	        			Statement st=con.createStatement();
+	        			ResultSet rs=st.executeQuery("select * from emp");
+	        			while(rs.next()){
+	        				
+	        				System.out.println(rs.getString(1)+"\t"+rs.getString(2)+"\t"+rs.getString(3)+"\t"+rs.getString(4));
+	        				}
+	        			
+	        		}
+	        	catch(Exception e)
+	        		{
+	        			System.out.println(e.toString());
+	        		}}
+	                case 2:
+	                {
+	                try
+	        		{Class.forName("com.mysql.jdbc.Driver");
+
+	        			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/empproject","root","gayathri23*M");
+	        			Statement st=con.createStatement();
+	        			
+	        			ResultSet rs=st.executeQuery("delete  from emp where name=suja" );
+	        			while(rs.next()){
+	        				
+	        				System.out.println(rs.getString(1)+"\t"+rs.getString(2));
+	        				}
+	        			
+	        		}
+	        	catch(Exception e)
+	        		{
+	        			System.out.println(e.toString());
+	        		}
+	                }
+	                case 3:
+	                {
+	                try
+	        		{Class.forName("com.mysql.jdbc.Driver");
+
+	        			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/empproject","root","gayathri23*M");
+	        			Statement st=con.createStatement();
+	        			ResultSet rs=st.executeQuery("update emp set name='suja',sallary=70000 where id=3");
+	        			while(rs.next()){
+	        				
+	        				System.out.println(rs.getString(1)+"\t"+rs.getString(2));
+	        				}
+	        			
+	        		}
+	        	catch(Exception e)
+	        		{
+	        			System.out.println(e.toString());
+	        		}
+	                }
+	                   case 4:
+	                {
+	                try
+	        		{
+	                	Class.forName("com.mysql.jdbc.Driver");
+	        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/empproject","root","gayathri23*M");
+	        			Statement st=con.createStatement();
+	        			String str1 =("id,name,sallary,exp");
+	        			ResultSet rs=st.executeQuery("insert into emp values('" +str1+ "', '" +str1+
+	        					"', '" +str1+ "','"+str1+"','" +str1+"')");
+
+	  		      }
+	  			  
+	                    catch(Exception e)
+	  			{
+	                System.out.println(e.toString()); 
+	  			}}
+	        		
+	                default:
+	                	System.out.println("none of the above choice made");
+	 	
+	                }		
+}}}
+	        		
+
+	           
+	        		
